@@ -42,8 +42,8 @@
 ## table
 |Column|Type|Options|
 |------|----|-------|
-|group_id|integer|index: true, unique: true, |
-|group_id|integer|index: true, unique: true, |
+|group_id|integer|index: true, foreign_key: true|
+|group_id|integer|index: true, foreign_key: true|
 
 ## association
   - belongs_to :user
@@ -57,8 +57,8 @@
 |------|----|-------|
 |body|integer||
 |message_img|string||
-|user_id|integer||
-|group_id|integer||
+|user_id|integer|foreign_key: true|
+|group_id|integer|foreign_key: true|
 
 ## association
   - belongs_to :user
