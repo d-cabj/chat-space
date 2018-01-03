@@ -1,24 +1,65 @@
-# README
+<!-- #モデル名
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+##テーブル名
+## table
+|Column|Type|Options|
+|------|----|-------|
 
-Things you may want to cover:
+##アソシエーション
+ - アソシエーションの記述
 
-* Ruby version
+ -->
 
-* System dependencies
+# User
+---
+## table
+|Column|Type|Options|
+|------|----|-------|
+|name|integer|null: false|
+|email|email|null: false, unique: true|
+|group_id|integer|null: false, foreign_key: true|
 
-* Configuration
+## association
+  - has_many :messages
+  - has_many :groups
+  - has_many :group_users
 
-* Database creation
+# Group
+---
 
-* Database initialization
+## table
+|Column|Type|Options|
+|------|----|-------|
+|name|integer|null: false, unique: true|
 
-* How to run the test suite
+## association
+  - has_many :messages
+  - has_many :users
+  - has_many :group_users
 
-* Services (job queues, cache servers, search engines, etc.)
+# Group_user
+---
+## table
+|Column|Type|Options|
+|------|----|-------|
+|group_id|integer|index: true, unique: true, |
+|group_id|integer|index: true, unique: true, |
 
-* Deployment instructions
+## association
+  - belongs_to :user
+  - belongs_to :group
 
-* ...
+# Message
+---
+
+## table
+|Column|Type|Options|
+|------|----|-------|
+|body|integer||
+|message_img|string||
+|user_id|integer||
+|group_id|integer||
+
+## association
+  - belongs_to :user
+  - belongs_to :group
