@@ -15,8 +15,8 @@
 ## table
 |Column|Type|Options|
 |------|----|-------|
-|name|integer|null: false, unique: true|
-|email|email|null: false, unique: true|
+|name|string|null: false, unique: true|
+|email|string|null: false, unique: true|
 |group_id|references|null: false, foreign_key: true|
 
 ## association
