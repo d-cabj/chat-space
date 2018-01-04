@@ -1,0 +1,66 @@
+@import "variables";
+@import "mixins";
+
+ol,ul{
+  list-style: none;
+  list-style-type: none;
+  list-style-position: initial;
+  list-style-image: initial;
+}
+
+.wrapper {
+  display: -webkit-flex;
+  display: -moz-flex;
+  display: -ms-flex;
+  display: -o-flex;
+  display: flex;
+}
+
+.sidebar{
+  box-sizing: border-box;
+  color: #fff;
+  width: 300px;
+  .header{
+    background-color: $sidebar-header-bg;
+    height: 100px;
+    line-height: 100px;
+    padding: 0 20px;
+    &__name{
+      display: inline-block;
+      font-size: 16px;
+      font-weight: bold;
+    }
+    &__lists{
+      display: inline-block;
+      float: right;
+      li:first-child{
+        padding-right: 5px;
+      }
+      .list{
+        display: inline-block;
+        .icon{
+          color: #fff;
+          font-size: 16px;
+        }
+      }
+    }
+  }
+  .groups{
+    background-color: $sidebar-groups-bg;
+    height: calc(100vh - 100px);
+    padding: 0 20px;
+    .group{
+      box-sizing: border-box;
+      padding: 20px 0 40px;
+      &__name{
+        color: #fff;
+        font-size: 15px;
+      }
+      &__message{
+        color: #fff;
+        font-size: 11px;
+        margin-top: 5px;
+      }
+    }
+  }
+}
