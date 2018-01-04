@@ -15,13 +15,13 @@
 ## table
 |Column|Type|Options|
 |------|----|-------|
-|name|integer|null: false|
+|name|integer|null: false, unique: true|
 |email|email|null: false, unique: true|
-|group_id|integer|null: false, foreign_key: true|
+|group_id|references|null: false, foreign_key: true|
 
 ## association
   - has_many :messages
-  - has_many :groups
+  - has_many :groups, through: group_users
   - has_many :group_users
 
 # Group
@@ -34,7 +34,7 @@
 
 ## association
   - has_many :messages
-  - has_many :users
+  - has_many :users, through: group_users
   - has_many :group_users
 
 # Group_user
@@ -42,8 +42,8 @@
 ## table
 |Column|Type|Options|
 |------|----|-------|
-|group_id|integer|index: true, foreign_key: true|
-|group_id|integer|index: true, foreign_key: true|
+|group_id|references|index: true, foreign_key: true|
+|group_id|references|index: true, foreign_key: true|
 
 ## association
   - belongs_to :user
@@ -57,8 +57,8 @@
 |------|----|-------|
 |body|integer||
 |message_img|string||
-|user_id|integer|foreign_key: true|
-|group_id|integer|foreign_key: true|
+|user_id|references|foreign_key: true|
+|group_id|references|foreign_key: true|
 
 ## association
   - belongs_to :user
