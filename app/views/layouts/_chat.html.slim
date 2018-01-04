@@ -1,0 +1,35 @@
+.chat
+  .header
+    .left-header
+      .left-header__title テストグループ
+      ul.left-header__members
+        = "Member： "
+        li.member テストA
+        li.member テストB
+    .right-header
+      a.right-header__button href="" Edit
+  .messages.js-messages
+    .message
+      .upper-message
+        .upper-message__user-name ユーザー名
+        .upper-message__date 2018/01/03 11:48
+      .lower-message
+        p.lower-message__content テストコメント
+    .message
+      .upper-message
+        .upper-message__user-name ユーザー名
+        .upper-message__date 2018/01/03 11:48
+      .lower-message
+        p.lower-message__content テストコメント
+  .form
+    form#new_message.js-form
+      input type="hidden"
+      input type="hidden"
+      input type="text" class="form__message js-content" placeholder="type a message"
+      .form__mask
+        label.form__mask__image for="message_image"
+          i.fa.fa-picture-o.icon
+          input.hidden.js-file type="file"
+      input.form__submit type="submit" name="commit" value="send"
+
+
