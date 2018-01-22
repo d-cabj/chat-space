@@ -1,0 +1,48 @@
+= form_for @group do |f|
+  = render "groups/errors"
+  .chat-group-form__field.clearfix
+    .chat-group-form__field--left
+      = f.label :name, "グループ名", class:"chat-group-form__label"
+    .chat-group-form__field--right
+      = f.text_field :name, class: "chat-group-form__input", placeholder: "グループ名を入力してください"
+  .chat-group-form__field.clearfix
+    /! この部分はインクリメンタルサーチ（ユーザー追加の非同期化のときに使用します
+    /!
+    .chat-group-form__field--left
+      label.chat-group-form__label="チャットメンバーを追加"
+    .chat-group-form__field--right
+      .chat-group-form__search.clearfix
+        input#user-search-field.chat-group-form__input placeholder= '追加したいユーザー名を入力してください'
+      #user-search-result
+        / .chat-group-form__field.clearfix
+        /   .chat-group-form__field--left
+        /     = f.label :users, "チャットメンバーを追加", class:"chat-group-form__label"
+        /   .chat-group-form__field--right
+        /! グループ作成機能の追加時はここにcollection_check_boxesの記述を入れてください
+        /! この部分はインクリメンタルサーチ（ユーザー追加の非同期化のときに使用します
+        /!
+        / = f.collection_check_boxes(:user_ids, User.where.not(id: current_user.id ), :id, :name) do |b|
+          = b.label { b.check_box + b.text }
+        #chat-group-users
+        /   .chat-group-user.clearfix#chat-group-user-22
+        /     = f.hidden_field :user_ids, value: "2", multiple: true
+        /     / input name='group[user_ids][]' type='hidden' value='2'
+        /     p.chat-group-user__name="seo_kyohei"
+        / #chat-group-users
+        /   .chat-group-user.clearfix#chat-group-user-23
+        /     input name='group[user_ids][]' type='hidden' value='3'
+        /     p.chat-group-user__name="seo_kyohei"
+  .chat-group-form__field.clearfix
+    .chat-group-form__field--left
+      label class="chat-group-form__label"="チャットメンバー"
+    .chat-group-form__field--right
+      .chat-group-users.js-add-user
+        - @users.each do |user|
+          .chat-group-user.clearfix.js-chat-member id="chat-group-user-#{user.id}"
+            input name="group[user_ids][]" type="hidden" value="#{user.id}"
+            p.chat-group-user__name=user.name
+            a.user-search-remove.chat-group-user__btn.chat-group-user__btn--remove.js-remove-btn data-user-id="#{user.id}" data-user-name="#{user.name}"="削除"
+  .chat-group-form__field.clearfix
+    .chat-group-form__field--left
+    .chat-group-form__field--right
+      = f.submit "Save", class: "chat-group-form__action-btn", data: {disable_with: "test"}
