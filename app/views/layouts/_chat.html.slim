@@ -1,33 +1,22 @@
 .chat
   .header
     .left-header
-      .left-header__title テストグループ
+      .left-header__title= "#{@group.name}"
       ul.left-header__members
         = "Member： "
-        li.member テストA
-        li.member テストB
+        - @group.users.each do |user|
+          li.member= "#{user.name}"
     .right-header
-      a.right-header__button href="" Edit
+      = link_to edit_group_path(@group.id), class: "right-header__button"
+        = "Edit"
   .messages.js-messages
-    .message
-      .upper-message
-        .upper-message__user-name ユーザー名
-        .upper-message__date 2018/01/03 11:48
-      .lower-message
-        p.lower-message__content テストコメント
-    .message
-      .upper-message
-        .upper-message__user-name ユーザー名
-        .upper-message__date 2018/01/03 11:48
-      .lower-message
-        p.lower-message__content テストコメント
+    - if @messages.present?
+      = render partial: "shared/message", collection: @messages
   .form
-    form#new_message.js-form
-      input type="hidden"
-      input type="hidden"
-      input type="text" class="form__message js-content" placeholder="type a message"
+    =form_for [@group, @message], html:{class: "js-form"} do |f|
+      = f.text_field :body, class:"form__message js-content", placeholder: "type a message"
       .form__mask
-        label.form__mask__image for="message_image"
+        = f.label :message_img, class:"form__mask__image"
           i.fa.fa-picture-o.icon
-          input.hidden.js-file type="file"
-      input.form__submit type="submit" name="commit" value="send"
+          = f.file_field :message_img, class:"hidden js-file"
+      = f.submit "send", class:"form__submit", name:"commit"
