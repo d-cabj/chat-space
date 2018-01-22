@@ -49,6 +49,7 @@ ol,ul{
     background-color: $sidebar-groups-bg;
     height: calc(100vh - 100px);
     padding: 0 20px;
+    overflow: scroll;
     .group{
       box-sizing: border-box;
       padding: 20px 0 40px;
@@ -60,6 +61,7 @@ ol,ul{
         color: #fff;
         font-size: 11px;
         margin-top: 5px;
+        word-wrap: break-word;
       }
     }
   }
