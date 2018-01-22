@@ -118,29 +118,31 @@ $(function () {
     $(".messages").stop().animate({ scrollTop: $(".messages")[0].scrollHeight }, { duration: "normal", easing: 'swing' } );
   };
 
-  // setInterval(function(){
-  //   var message_id = $(".message:last").data("id");
-  //   group_id = window.location.href.match(/groups\/(\d+)/)[1]
-  //   $.ajax({
-  //     url: window.location.href,
-  //     type: "GET",
-  //     data: { message_id : message_id },
-  //     dataType: 'json',
-  //     contentType: false
-  //   })
-  //   .done(function(return_messages){
-  //     if(!$.isEmptyObject(return_messages)){
-  //       return_messages.forEach(function(return_message){
-  //         buildHTML(return_message);
-  //       });
-  //       scroll();
-  //     }else{
-  //       scroll();
-  //       return false;
-  //     }
-  //   })
-  //   .fail(function(){
-  //     alert("autoreload失敗")
-  //   })
-  // },5000);
+  if(window.location.href.match(/groups\/\d+\/messages/)){
+    setInterval(function(){
+      var message_id = $(".message:last").data("id");
+      group_id = window.location.href.match(/groups\/(\d+)/)[1]
+      $.ajax({
+        url: window.location.href,
+        type: "GET",
+        data: { message_id : message_id },
+        dataType: 'json',
+        contentType: false
+      })
+      .done(function(return_messages){
+        if(!$.isEmptyObject(return_messages)){
+          return_messages.forEach(function(return_message){
+            buildHTML(return_message);
+          });
+          scroll();
+        }else{
+          scroll();
+          return false;
+        }
+      })
+      .fail(function(){
+        alert("autoreload失敗")
+      })
+    },5000);
+  }
 })

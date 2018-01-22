@@ -1,4 +1,4 @@
-$(document).on('turbolinks:load', function(){
+$(function () {
   function buildSearchUserResult(user){
     var html = `<div id="chat-group-users">
                   <div id="chat-group-user-${user.id}" class="chat-group-user clearfix">
@@ -52,17 +52,6 @@ $(document).on('turbolinks:load', function(){
 
   $(document).on("click", ".user-search-add", function(event){
     var add_user = this
-    // $(".js-chat-member").each(function(i){
-    //   judge = true;
-    //   if (add_user.getAttribute('data-user-id') == $(".js-chat-member:eq("+i+") a")[0].getAttribute("data-user-id")){
-
-    //     judge = false;
-    //     return false;
-    //   }
-    // },add_user);
-    // if(!judge){
-    //   return false;
-    // }
     user_id = this.getAttribute('data-user-id')
     user_name = this.getAttribute('data-user-name')
     registUserSet(user_id,user_name);
