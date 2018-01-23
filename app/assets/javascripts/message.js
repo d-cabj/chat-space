@@ -121,7 +121,11 @@ $(document).on('turbolinks:load', function(){
 
   if(window.location.href.match(/groups\/\d+\/messages/)){
     setInterval(function(){
-      var message_id = $(".message:last").data("id");
+      if($(".message:last")){
+        var message_id = $(".message:last").data("id");
+      }else{
+        return false;
+      }
       group_id = window.location.href.match(/groups\/(\d+)/)[1]
       $.ajax({
         url: window.location.href,
