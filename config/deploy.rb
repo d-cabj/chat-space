@@ -12,8 +12,12 @@ set :rbenv_type, :user
 set :rbenv_ruby, '2.3.1'
 
 # <ローカルPCのEC2インスタンスのSSH鍵(pem)へのパス>
-set :ssh_options, auth_methods: ['dame1927'],
-                  keys: ['/Users/ogu/.ssh/chat-space.pem']  # 例：/Users/yusukeyamane/.ssh/key_pem.pem
+set :ssh_options, {
+  user: 'ec2-user',
+  auth_methods: %w{publickey},
+  forward_agent: true,
+  keys: %w{/Users/ogu/.ssh/chat-space.pem}
+}  # 例：/Users/yusukeyamane/.ssh/key_pem.pem
 
 set :unicorn_pid, -> { "#{shared_path}/tmp/pids/unicorn.pid" }
 set :unicorn_config_path, -> { "#{current_path}/config/unicorn.rb" }
