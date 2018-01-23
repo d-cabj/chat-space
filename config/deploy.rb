@@ -19,8 +19,6 @@ set :ssh_options, {
   keys: %w{/Users/ogu/.ssh/chat-space.pem}
 }  # 例：/Users/yusukeyamane/.ssh/key_pem.pem
 
-set :assets_roles, [:web, :app]
-
 set :unicorn_pid, -> { "#{shared_path}/tmp/pids/unicorn.pid" }
 set :unicorn_config_path, -> { "#{current_path}/config/unicorn.rb" }
 set :keep_releases, 5
