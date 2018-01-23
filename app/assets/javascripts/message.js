@@ -79,7 +79,8 @@ $(document).on('turbolinks:load', function(){
   })
 })
 
-$(function () {
+// $(function () {
+$(document).on('turbolinks:load', function(){
   function buildHTML(message){
     if(message.messages){
       return;
