@@ -23,23 +23,23 @@ $(document).on('turbolinks:load', function(){
     if (message.message_img == null){
       var chat_message_img = "";
     }else{
-      var chat_message_img = `<img class="lower-message__image" src="${message.message_img}">`
+      var chat_message_img = '<img class="lower-message__image" src="' + message.message_img + '">'
     }
 
-    // var html = `<div class="message" data-id="${message.id}">
-    //               <div class="upper-message">
-    //                 <div class="upper-message__user-name">
-    //                   ${message.user_name}
-    //                 </div>
-    //                 <div class="upper-message__date">
-    //                   ${message.created_at}
-    //                 </div>
-    //               </div>
-    //               <div class="lower-message">
-    //                 ${chat_message}
-    //                 ${chat_message_img}
-    //               </div>
-    //            </div>`
+    var html = '<div class="message" data-id="'+ message.id+'">'+
+                  '<div class="upper-message">'+
+                    '<div class="upper-message__user-name">'+
+                      message.user_name +
+                    '</div>'+
+                    '<div class="upper-message__date">'+
+                      message.created_at +
+                    '</div>'+
+                  '</div>'+
+                  '<div class="lower-message">'+
+                    chat_message+
+                    chat_message_img+
+                  '</div>'+
+               '</div>'
     $('.js-messages').append(html);
   }
 
@@ -94,24 +94,24 @@ $(function () {
     if (message.message_img == null){
       var chat_message_img = "";
     }else{
-      var chat_message_img = `<img class="lower-message__image" src="${message.message_img}">`
+      var chat_message_img = '<img class="lower-message__image" src="' + message.message_img + '">'
     }
 
-    // var html = `<div class="message" data-id="${message.id}">
-    //               <div class="upper-message">
-    //                 <div class="upper-message__user-name">
-    //                   ${message.user_name}
-    //                 </div>
-    //                 <div class="upper-message__date">
-    //                   ${message.created_at}
-    //                 </div>
-    //               </div>
-    //               <div class="lower-message">
-    //                 ${chat_message}
-    //                 ${chat_message_img}
-    //               </div>
-    //            </div>`
-    // $('.js-messages').append(html);
+    var html = '<div class="message" data-id="'+ message.id+'">'+
+                  '<div class="upper-message">'+
+                    '<div class="upper-message__user-name">'+
+                      message.user_name +
+                    '</div>'+
+                    '<div class="upper-message__date">'+
+                      message.created_at +
+                    '</div>'+
+                  '</div>'+
+                  '<div class="lower-message">'+
+                    chat_message+
+                    chat_message_img+
+                  '</div>'+
+               '</div>'
+    $('.js-messages').append(html);
   }
 
   function scroll(){
