@@ -1,24 +1,24 @@
 $(function () {
-  function buildSearchUserResult(user){
-    var html = `<div id="chat-group-users">
-                  <div id="chat-group-user-${user.id}" class="chat-group-user clearfix">
-                    <p class="chat-group-user__name">${user.user_name}</p>
-                    <a class="user-search-add chat-group-user__btn chat-group-user__btn--add js-add-btn" data-user-id="${user.id}" data-user-name="${user.user_name}">追加</a>
-                  </div>
-                </div>`
-    $('#user-search-result').append(html);
-  };
+  // function buildSearchUserResult(user){
+  //   var html = `<div id="chat-group-users">
+  //                 <div id="chat-group-user-${user.id}" class="chat-group-user clearfix">
+  //                   <p class="chat-group-user__name">${user.user_name}</p>
+  //                   <a class="user-search-add chat-group-user__btn chat-group-user__btn--add js-add-btn" data-user-id="${user.id}" data-user-name="${user.user_name}">追加</a>
+  //                 </div>
+  //               </div>`
+  //   $('#user-search-result').append(html);
+  // };
 
-  function registUserSet(id, name){
-    var html = `<div class="chat-group-user clearfix js-chat-member" id="chat-group-user-${id}">
-                    <input name="group[user_ids][]" type="hidden" value="${id}">
-                    <p class="chat-group-user__name">${name}</p>
-                    <a class="user-search-remove chat-group-user__btn chat-group-user__btn--remove js-remove-btn" data-user-id="${id}" data-user-name="testman">削除</a>
-                  </div>`
+  // function registUserSet(id, name){
+  //   var html = `<div class="chat-group-user clearfix js-chat-member" id="chat-group-user-${id}">
+  //                   <input name="group[user_ids][]" type="hidden" value="${id}">
+  //                   <p class="chat-group-user__name">${name}</p>
+  //                   <a class="user-search-remove chat-group-user__btn chat-group-user__btn--remove js-remove-btn" data-user-id="${id}" data-user-name="testman">削除</a>
+  //                 </div>`
 
-    $('.chat-group-users').append(html);
+  //   $('.chat-group-users').append(html);
 
-  };
+  // };
 
   $("#user-search-field").on("keyup", function() {
     var input = $("#user-search-field").val();
