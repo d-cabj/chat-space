@@ -13,7 +13,7 @@ set :rbenv_ruby, '2.3.1'
 
 # <ローカルPCのEC2インスタンスのSSH鍵(pem)へのパス>
 set :ssh_options, auth_methods: ['publickey'],
-                  keys: ['~/.ssh/chat-space.pem']  # 例：/Users/yusukeyamane/.ssh/key_pem.pem
+                  keys: ['/Users/ogu/.ssh/chat-space.pem']  # 例：/Users/yusukeyamane/.ssh/key_pem.pem
 
 set :unicorn_pid, -> { "#{shared_path}/tmp/pids/unicorn.pid" }
 set :unicorn_config_path, -> { "#{current_path}/config/unicorn.rb" }
