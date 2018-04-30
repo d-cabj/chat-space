@@ -62,6 +62,7 @@ $(document).on('turbolinks:load', function(){
     .done(function(data){
       buildHTML(data);
       scroll();
+      $("#new_message")[0].reset();
       if($(".message:last-child .lower-message__content").length == 1 && now_group_latest_message){
 
         // 30文字以上のメッセージの場合は省略
